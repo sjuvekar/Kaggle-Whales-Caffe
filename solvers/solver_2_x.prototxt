@@ -1,0 +1,16 @@
+# The train/test net protocol buffer definition
+net: "train/poin2_x_train.prototxt"
+test_state: { stage: 'test-on-train' }
+test_iter: 10
+test_interval: 5
+type: "AdaDelta"
+test_compute_loss: true
+base_lr: 1.0
+momentum: 0.9
+delta: 1e-8
+weight_decay: 0.0005
+lr_policy: "fixed"
+display: 4
+max_iter: 40
+snapshot_prefix: "model"
+solver_mode: GPU
