@@ -11,6 +11,8 @@ layer {
     source: "images/classifier.txt"
     batch_size: 32
     shuffle: true
+    new_height: 256
+    new_width: 256
   }
 }
 layer {
