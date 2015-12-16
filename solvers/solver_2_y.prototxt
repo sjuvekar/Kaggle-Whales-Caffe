@@ -12,5 +12,5 @@ weight_decay: 0.0005
 lr_policy: "fixed"
 display: 4
 max_iter: 40
-snapshot_prefix: "model"
+snapshot_prefix: "model_2_y"
 solver_mode: GPU
