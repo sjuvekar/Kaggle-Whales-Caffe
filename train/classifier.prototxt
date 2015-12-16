@@ -6,7 +6,6 @@ layer {
   transform_param {
     mirror: true
     scale: 0.00392156862745
-    crop_size: 20
   }
   image_data_param {
     source: "images/classifier.txt"
