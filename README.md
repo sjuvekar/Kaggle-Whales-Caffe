@@ -32,3 +32,6 @@ from [Anil's repo](https://github.com/anlthms/whale-2015)
     ```
 
 ### TODO and Differences
+1. This code only ports 'test-cropping-via-deconvolution' part of the original code. Classifier will be translated soon.
+2. X and Y co-ordinate-masks of both Bonnet and Head points are trained independently (a total of 4 NN trainings). Need to find a way for Caffe to work with multi-dimensional output.
+3. BatchNormalization is not implemented yet.
