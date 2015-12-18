@@ -9,10 +9,10 @@ layer {
   }
   image_data_param {
     source: "images/classifier.txt"
-    batch_size: 32
+    batch_size: 16
     shuffle: true
-    new_height: 256
-    new_width: 256
+    new_height: 384
+    new_width: 384
   }
 }
 layer {
@@ -45,7 +45,6 @@ layer {
     num_output: 64
     kernel_size: 3
     pad: 2
-    stride: 3
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -77,7 +76,6 @@ layer {
     num_output: 128
     kernel_size: 3
     pad: 2
-    stride: 3
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -108,7 +106,6 @@ layer {
   convolution_param {
     num_output: 256
     kernel_size: 3
-    stride: 3
     pad: 2
     weight_filler {
       type: "gaussian"
@@ -140,7 +137,6 @@ layer {
   convolution_param {
     num_output: 512
     kernel_size: 3
-    stride: 3
     pad: 2
     weight_filler {
       type: "gaussian"
@@ -172,7 +168,6 @@ layer {
   convolution_param {
     num_output: 1024
     kernel_size: 3
-    stride: 3
     pad: 2
     weight_filler {
       type: "gaussian"
@@ -204,7 +199,6 @@ layer {
   convolution_param {
     num_output: 1024
     kernel_size: 3
-    stride: 3
     pad: 2
     weight_filler {
       type: "gaussian"
