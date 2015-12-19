@@ -1,13 +1,12 @@
 # The train/test net protocol buffer definition
 net: "train/classifier.prototxt"
 test_state: { stage: 'test-on-train' }
-test_iter: 300
+test_iter: 600
 test_interval: 600
-type: "AdaDelta"
-rms_decay: 0.98
 test_compute_loss: true
+type: "AdaDelta"
 gamma: 0.0001
-base_lr: 1.0
+base_lr: 0.1
 momentum: 0.95
 delta: 1e-6
 weight_decay: 0.0005
