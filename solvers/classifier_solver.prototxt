@@ -2,7 +2,7 @@
 net: "train/classifier.prototxt"
 test_state: { stage: 'test-on-train' }
 test_iter: 600
-test_interval: 600
+test_interval: 1200
 test_compute_loss: true
 type: "AdaDelta"
 gamma: 0.0001
@@ -12,7 +12,7 @@ delta: 1e-6
 weight_decay: 0.0005
 power: 0.75
 lr_policy: "fixed"
-display: 150
-max_iter: 9000
+display: 600
+max_iter: 18000
 snapshot_prefix: "classifier"
 solver_mode: GPU
