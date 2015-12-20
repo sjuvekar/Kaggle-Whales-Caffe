@@ -709,15 +709,9 @@ layer {
   }
 }
 layer {
-  name: "final"
-  type: "Sigmoid"
-  bottom: "ip1"
-  top: "final"
-}
-layer {
   name: "loss"
   type: "EuclideanLoss"
-  bottom: "final"
+  bottom: "ip1"
   bottom: "label"
   top: "loss"
 }
