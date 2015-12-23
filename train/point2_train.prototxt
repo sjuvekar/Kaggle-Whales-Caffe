@@ -1,0 +1,941 @@
+layer {
+  name: "data"
+  type: "ImageData"
+  top: "data"
+  include {
+    phase: TRAIN
+  }
+  transform_param {
+    scale: 0.00392156862745
+    mirror: true
+  }
+  image_data_param {
+    source: "images/train_points.txt"
+    batch_size: 8
+    shuffle: true
+  }
+}
+layer {
+  name: "data"
+  type: "ImageData"
+  top: "data"
+  include {
+    phase: TEST
+  }
+  transform_param {
+    scale: 0.00392156862745
+    mirror: true
+  }
+  image_data_param {
+    source: "images/test_points.txt"
+    batch_size: 8
+    shuffle: true
+  }
+}
+layer {
+  name: "mask"
+  type: "ImageData"
+  top: "mask"
+  include {
+    phase: TRAIN
+  }
+  transform_param {
+    scale: 0.00392156862745
+    mirror: true
+  }
+  image_data_param {
+    source: "images/mask_point2.txt"
+    batch_size: 8
+    shuffle: true
+  }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 128
+    kernel_size: 2
+    stride: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv1_bn"
+  type: "BatchNorm"
+  bottom: "conv1"
+  top: "conv1_bn"
+}
+layer {
+  name: "relu1"
+  type: "ReLU"
+  bottom: "conv1_bn"
+  top: "conv1_bn"
+}
+layer {
+  name: "conv2"
+  type: "Convolution"
+  bottom: "conv1_bn"
+  top: "conv2"
+  convolution_param {
+    num_output: 128
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv2_bn"
+  type: "BatchNorm"
+  bottom: "conv2"
+  top: "conv2_bn"
+}
+layer {
+  name: "relu2"
+  type: "ReLU"
+  bottom: "conv2_bn"
+  top: "conv2_bn"
+}
+layer {
+  name: "conv3"
+  type: "Convolution"
+  bottom: "conv2_bn"
+  top: "conv3"
+  convolution_param {
+    num_output: 64
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv3_bn"
+  type: "BatchNorm"
+  bottom: "conv3"
+  top: "conv3_bn"
+}
+layer {
+  name: "relu3"
+  type: "ReLU"
+  bottom: "conv3_bn"
+  top: "conv3_bn"
+}
+layer {
+  name: "conv4"
+  type: "Convolution"
+  bottom: "conv3_bn"
+  top: "conv4"
+  convolution_param {
+    num_output: 32
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv4_bn"
+  type: "BatchNorm"
+  bottom: "conv4"
+  top: "conv4_bn"
+}
+layer {
+  name: "relu4"
+  type: "ReLU"
+  bottom: "conv4_bn"
+  top: "conv4_bn"
+}
+layer {
+  name: "conv5"
+  type: "Convolution"
+  bottom: "conv4_bn"
+  top: "conv5"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv5_bn"
+  type: "BatchNorm"
+  bottom: "conv5"
+  top: "conv5_bn"
+}
+layer {
+  name: "relu5"
+  type: "ReLU"
+  bottom: "conv5_bn"
+  top: "conv5_bn"
+}
+layer {
+  name: "conv6"
+  type: "Convolution"
+  bottom: "conv5_bn"
+  top: "conv6"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv6_bn"
+  type: "BatchNorm"
+  bottom: "conv6"
+  top: "conv6_bn"
+}
+layer {
+  name: "relu6"
+  type: "ReLU"
+  bottom: "conv6_bn"
+  top: "conv6_bn"
+}
+layer {
+  name: "conv7"
+  type: "Convolution"
+  bottom: "conv6_bn"
+  top: "conv7"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv7_bn"
+  type: "BatchNorm"
+  bottom: "conv7"
+  top: "conv7_bn"
+}
+layer {
+  name: "relu7"
+  type: "ReLU"
+  bottom: "conv7_bn"
+  top: "conv7_bn"
+}
+layer {
+  name: "conv8"
+  type: "Convolution"
+  bottom: "conv7_bn"
+  top: "conv8"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "relu8"
+  type: "ReLU"
+  bottom: "conv8_bn"
+  top: "conv8_bn"
+}
+layer {
+  name: "conv9"
+  type: "Convolution"
+  bottom: "conv8_bn"
+  top: "conv9"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv9_bn"
+  type: "BatchNorm"
+  bottom: "conv9"
+  top: "conv9_bn"
+}
+layer {
+  name: "relu9"
+  type: "ReLU"
+  bottom: "conv9_bn"
+  top: "conv9_bn"
+}
+layer {
+  name: "conv10"
+  type: "Convolution"
+  bottom: "conv9_bn"
+  top: "conv10"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv10_bn"
+  type: "BatchNorm"
+  bottom: "conv10"
+  top: "conv10_bn"
+}
+layer {
+  name: "relu10"
+  type: "ReLU"
+  bottom: "conv10_bn"
+  top: "conv10_bn"
+}
+layer {
+  name: "conv11"
+  type: "Convolution"
+  bottom: "conv10_bn"
+  top: "conv11"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv11_bn"
+  type: "BatchNorm"
+  bottom: "conv11"
+  top: "conv11_bn"
+}
+layer {
+  name: "relu11"
+  type: "ReLU"
+  bottom: "conv11_bn"
+  top: "conv11_bn"
+}
+layer {
+  name: "conv12"
+  type: "Convolution"
+  bottom: "conv11_bn"
+  top: "conv12"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv12_bn"
+  type: "BatchNorm"
+  bottom: "conv12"
+  top: "conv12_bn"
+}
+layer {
+  name: "relu12"
+  type: "ReLU"
+  bottom: "conv12_bn"
+  top: "conv12_bn"
+}
+layer {
+  name: "conv13"
+  type: "Convolution"
+  bottom: "conv12_bn"
+  top: "conv13"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv13_bn"
+  type: "BatchNorm"
+  bottom: "conv13"
+  top: "conv13_bn"
+}
+layer {
+  name: "relu13"
+  type: "ReLU"
+  bottom: "conv13_bn"
+  top: "conv13_bn"
+}
+layer {
+  name: "conv14"
+  type: "Convolution"
+  bottom: "conv13_bn"
+  top: "conv14"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv14_bn"
+  type: "BatchNorm"
+  bottom: "conv14"
+  top: "conv14_bn"
+}
+layer {
+  name: "relu14"
+  type: "ReLU"
+  bottom: "conv14_bn"
+  top: "conv14_bn"
+}
+layer {
+  name: "conv15"
+  type: "Convolution"
+  bottom: "conv14_bn"
+  top: "conv15"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv15_bn"
+  type: "BatchNorm"
+  bottom: "conv15"
+  top: "conv15_bn"
+}
+layer {
+  name: "relu15"
+  type: "ReLU"
+  bottom: "conv15_bn"
+  top: "conv15_bn"
+}
+layer {
+  name: "conv16"
+  type: "Convolution"
+  bottom: "conv15_bn"
+  top: "conv16"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv16_bn"
+  type: "BatchNorm"
+  bottom: "conv16"
+  top: "conv16_bn"
+}
+layer {
+  name: "relu16"
+  type: "ReLU"
+  bottom: "conv16_bn"
+  top: "conv16_bn"
+}
+layer {
+  name: "conv17"
+  type: "Convolution"
+  bottom: "conv16_bn"
+  top: "conv17"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "conv17_bn"
+  type: "BatchNorm"
+  bottom: "conv17"
+  top: "conv17_bn"
+}
+layer {
+  name: "relu17"
+  type: "ReLU"
+  bottom: "conv17_bn"
+  top: "conv17_bn"
+}
+layer {
+  name: "deconv1"
+  type: "Deconvolution"
+  bottom: "conv17_bn"
+  top: "deconv1"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv1_bn"
+  type: "BatchNorm"
+  bottom: "deconv1"
+  top: "deconv1_bn"
+}
+layer {
+  name: "drelu1"
+  type: "ReLU"
+  bottom: "deconv1_bn"
+  top: "deconv1_bn"
+}
+layer {
+  name: "deconv2"
+  type: "Deconvolution"
+  bottom: "deconv1_bn"
+  top: "deconv2"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv2_bn"
+  type: "BatchNorm"
+  bottom: "deconv2"
+  top: "deconv2_bn"
+}
+layer {
+  name: "drelu2"
+  type: "ReLU"
+  bottom: "deconv2_bn"
+  top: "deconv2_bn"
+}
+layer {
+  name: "deconv3"
+  type: "Deconvolution"
+  bottom: "deconv2_bn"
+  top: "deconv3"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv3_bn"
+  type: "BatchNorm"
+  bottom: "deconv3"
+  top: "deconv3_bn"
+}
+layer {
+  name: "drelu3"
+  type: "ReLU"
+  bottom: "deconv3_bn"
+  top: "deconv3_bn"
+}
+layer {
+  name: "deconv4"
+  type: "Deconvolution"
+  bottom: "deconv3_bn"
+  top: "deconv4"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv4_bn"
+  type: "BatchNorm"
+  bottom: "deconv4"
+  top: "deconv4_bn"
+}
+layer {
+  name: "drelu4"
+  type: "ReLU"
+  bottom: "deconv4_bn"
+  top: "deconv4_bn"
+}
+layer {
+  name: "deconv5"
+  type: "Deconvolution"
+  bottom: "deconv4_bn"
+  top: "deconv5"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv5_bn"
+  type: "BatchNorm"
+  bottom: "deconv5"
+  top: "deconv5_bn"
+}
+layer {
+  name: "drelu5"
+  type: "ReLU"
+  bottom: "deconv5_bn"
+  top: "deconv5_bn"
+}
+layer {
+  name: "deconv6"
+  type: "Deconvolution"
+  bottom: "deconv5_bn"
+  top: "deconv6"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv6_bn"
+  type: "BatchNorm"
+  bottom: "deconv6"
+  top: "deconv6_bn"
+}
+layer {
+  name: "drelu6"
+  type: "ReLU"
+  bottom: "deconv6_bn"
+  top: "deconv6_bn"
+}
+layer {
+  name: "deconv7"
+  type: "Deconvolution"
+  bottom: "deconv6_bn"
+  top: "deconv7"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv7_bn"
+  type: "BatchNorm"
+  bottom: "deconv7"
+  top: "deconv7_bn"
+}
+layer {
+  name: "drelu7"
+  type: "ReLU"
+  bottom: "deconv7_bn"
+  top: "deconv7_bn"
+}
+layer {
+  name: "deconv8"
+  type: "Deconvolution"
+  bottom: "deconv7_bn"
+  top: "deconv8"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv8_bn"
+  type: "BatchNorm"
+  bottom: "deconv8"
+  top: "deconv8_bn"
+}
+layer {
+  name: "drelu8"
+  type: "ReLU"
+  bottom: "deconv8_bn"
+  top: "deconv8_bn"
+}
+layer {
+  name: "deconv9"
+  type: "Deconvolution"
+  bottom: "deconv8_bn"
+  top: "deconv9"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv9_bn"
+  type: "BatchNorm"
+  bottom: "deconv9"
+  top: "deconv9_bn"
+}
+layer {
+  name: "drelu9"
+  type: "ReLU"
+  bottom: "deconv9_bn"
+  top: "deconv9_bn"
+}
+layer {
+  name: "deconv10"
+  type: "Deconvolution"
+  bottom: "deconv9_bn"
+  top: "deconv10"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv10_bn"
+  type: "BatchNorm"
+  bottom: "deconv10"
+  top: "deconv10_bn"
+}
+layer {
+  name: "drelu10"
+  type: "ReLU"
+  bottom: "deconv10_bn"
+  top: "deconv10_bn"
+}
+layer {
+  name: "deconv11"
+  type: "Deconvolution"
+  bottom: "deconv10_bn"
+  top: "deconv11"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv11_bn"
+  type: "BatchNorm"
+  bottom: "deconv11"
+  top: "deconv11_bn"
+}
+layer {
+  name: "drelu11"
+  type: "ReLU"
+  bottom: "deconv11_bn"
+  top: "deconv11_bn"
+}
+layer {
+  name: "deconv12"
+  type: "Deconvolution"
+  bottom: "deconv11_bn"
+  top: "deconv12"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv12_bn"
+  type: "BatchNorm"
+  bottom: "deconv12"
+  top: "deconv12_bn"
+}
+layer {
+  name: "drelu12"
+  type: "ReLU"
+  bottom: "deconv12_bn"
+  top: "deconv12_bn"
+}
+layer {
+  name: "deconv13"
+  type: "Deconvolution"
+  bottom: "deconv12_bn"
+  top: "deconv13"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv13_bn"
+  type: "BatchNorm"
+  bottom: "deconv13"
+  top: "deconv13_bn"
+}
+layer {
+  name: "drelu13"
+  type: "ReLU"
+  bottom: "deconv13_bn"
+  top: "deconv13_bn"
+}
+layer {
+  name: "deconv14"
+  type: "Deconvolution"
+  bottom: "deconv13_bn"
+  top: "deconv14"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv14_bn"
+  type: "BatchNorm"
+  bottom: "deconv14"
+  top: "deconv14_bn"
+}
+layer {
+  name: "drelu14"
+  type: "ReLU"
+  bottom: "deconv14_bn"
+  top: "deconv14_bn"
+}
+layer {
+  name: "deconv15"
+  type: "Deconvolution"
+  bottom: "deconv14_bn"
+  top: "deconv15"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv15_bn"
+  type: "BatchNorm"
+  bottom: "deconv15"
+  top: "deconv15_bn"
+}
+layer {
+  name: "drelu15"
+  type: "ReLU"
+  bottom: "deconv15_bn"
+  top: "deconv15_bn"
+}
+layer {
+  name: "deconv16"
+  type: "Deconvolution"
+  bottom: "deconv15_bn"
+  top: "deconv16"
+  convolution_param {
+    num_output: 16
+    kernel_size: 4
+    stride: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv16_bn"
+  type: "BatchNorm"
+  bottom: "deconv16"
+  top: "deconv16_bn"
+}
+layer {
+  name: "drelu16"
+  type: "ReLU"
+  bottom: "deconv16_bn"
+  top: "deconv16_bn"
+}
+layer {
+  name: "deconv17"
+  type: "Deconvolution"
+  bottom: "deconv16_bn"
+  top: "deconv17"
+  convolution_param {
+    num_output: 1
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.1
+    }
+  }
+}
+layer {
+  name: "deconv17_bn"
+  type: "BatchNorm"
+  bottom: "deconv17"
+  top: "deconv17_bn"
+}
+layer {
+  name: "logistic"
+  type: "Sigmoid"
+  bottom: "deconv17_bn"
+  top: "deconv17_bn"
+}
+layer {
+  name: "loss"
+  type: "EuclideanLoss"
+  include {
+    phase: TRAIN
+  }
+  bottom: "mask"
+  bottom: "deconv17_bn"
+  top: "loss"
+}
