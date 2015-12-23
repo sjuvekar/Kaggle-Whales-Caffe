@@ -1,52 +1,30 @@
+name: "LOCALIZER_Point2"
 layer {
   name: "data"
-  type: "ImageData"
+  type: "Data"
   top: "data"
-  include {
-    phase: TRAIN
-  }
   transform_param {
     scale: 0.00392156862745
     mirror: true
   }
-  image_data_param {
-    source: "images/train_points.txt"
+  data_param {
+    source: "images/train_lmdb"
     batch_size: 8
-    shuffle: true
-  }
-}
-layer {
-  name: "data"
-  type: "ImageData"
-  top: "data"
-  include {
-    phase: TEST
-  }
-  transform_param {
-    scale: 0.00392156862745
-    mirror: true
-  }
-  image_data_param {
-    source: "images/test_points.txt"
-    batch_size: 8
-    shuffle: true
+    backend: LMDB
   }
 }
 layer {
   name: "mask"
-  type: "ImageData"
+  type: "Data"
   top: "mask"
-  include {
-    phase: TRAIN
-  }
   transform_param {
     scale: 0.00392156862745
     mirror: true
   }
-  image_data_param {
-    source: "images/mask_point2.txt"
+  data_param {
+    source: "images/mask_point2_lmdb"
     batch_size: 8
-    shuffle: true
+    backend: LMDB
   }
 }
 layer {
@@ -245,6 +223,12 @@ layer {
       std: 0.1
     }
   }
+}
+layer {
+  name: "conv8_bn"
+  type: "BatchNorm"
+  bottom: "conv8"
+  top: "conv8_bn"
 }
 layer {
   name: "relu8"
@@ -932,9 +916,6 @@ layer {
 layer {
   name: "loss"
   type: "EuclideanLoss"
-  include {
-    phase: TRAIN
-  }
   bottom: "mask"
   bottom: "deconv17_bn"
   top: "loss"
