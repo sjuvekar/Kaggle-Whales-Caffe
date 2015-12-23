@@ -13,6 +13,6 @@ weight_decay: 0.0005
 power: 0.75
 lr_policy: "fixed"
 display: 600
-max_iter: 18000
+max_iter: 45600
 snapshot_prefix: "classifier"
 solver_mode: GPU
