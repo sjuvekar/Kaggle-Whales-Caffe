@@ -17,8 +17,7 @@ from [Anil's repo](https://github.com/anlthms/whale-2015)
 
 2. Create ```/train```, ```/test``` and ```/traincrops``` directories using 
    [Anil's repo](https://github.com/anlthms/whale-2015). All you need is call ```prep``` method in ```run.sh``` in 
-   his repo. Copy all three directories to ```data/``` directory here. Also download ```sample_submission.csv``` file to
-   ```data/```.
+   his repo. Copy all three directories to ```data/``` directory here. Also download ```sample_submission.csv``` file to data
 
 3. Declare ```CAFFE_ROOT``` environmental variable. 
 
