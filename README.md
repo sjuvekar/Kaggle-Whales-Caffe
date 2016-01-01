@@ -32,5 +32,4 @@ from [Anil's repo](https://github.com/anlthms/whale-2015)
     ```
 
 ### TODO and Differences
-1. X and Y co-ordinate-masks of both Bonnet and Head points are trained independently (a total of 4 NN trainings). Need to find a way for Caffe to work with multi-dimensional output.
-2. Need to write wrapper scripts to predict Bonnet and Head for test images, crop test images (possibly using anlthm/whalw-2015/crop.py) and predict using classifier.
+1. Need to write wrapper scripts to predict Bonnet and Head for test images; and crop test images (possibly using anlthm/whalw-2015/crop.py).
