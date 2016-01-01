@@ -9,7 +9,7 @@ layer {
   }
   data_param {
     source: "images/train_lmdb"
-    batch_size: 1
+    batch_size: 4
     backend: LMDB
   }
 }
@@ -23,7 +23,7 @@ layer {
   }
   data_param {
     source: "images/mask_point1_lmdb"
-    batch_size: 1
+    batch_size: 4
     backend: LMDB
   }
 }

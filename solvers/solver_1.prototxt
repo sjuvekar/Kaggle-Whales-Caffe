@@ -6,13 +6,13 @@ net: "train/point1_train.prototxt"
 #test_compute_loss: true
 type: "AdaDelta"
 gamma: 0.0001
-base_lr: 1.0
+base_lr: 0.1
 momentum: 0.95
 delta: 1e-6
 weight_decay: 0.0005
 power: 0.75
 lr_policy: "fixed"
-display: 4544
-max_iter: 204480
+display: 1136
+max_iter: 51120
 snapshot_prefix: "model_1"
 solver_mode: GPU
