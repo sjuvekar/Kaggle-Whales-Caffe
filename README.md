@@ -35,4 +35,4 @@ from [Anil's repo](https://github.com/anlthms/whale-2015)
 1. Need to write wrapper scripts to predict Bonnet and Head for test images; and crop test images (possibly using anlthm/whalw-2015/crop.py).
 
 ### Acknowledements
-Thanks Anil Thomas and Team Nervana for initial code. This project has started as a re-implentation of [origin code](https://github.com/anlthms/whale-2015). Special Thanks to Praveen ([https://github.com/opraveen](https://github.com/opraveen)) For developing critical components of the code.
+Thanks Anil Thomas and Team Nervana for initial code. This project has started as a re-implentation of [original code](https://github.com/anlthms/whale-2015). Special Thanks to Praveen ([https://github.com/opraveen](https://github.com/opraveen)) For developing critical components of the code.
